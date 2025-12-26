@@ -1,3 +1,4 @@
+from typing import List
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort() # O (n log n)
@@ -32,3 +33,13 @@ class Solution:
 # Time complexity: O(n^2)
 # Space complexity: O(n)
 
+
+if __name__ == "__main__":
+    sol = Solution()
+    nums = [-1,0,1,2,-1,-4]
+    print(sol.threeSum(nums))  # Expected output: [[-1, -1, 2], [-1, 0, 1]]
+    nums = [0,1,1]
+    print(sol.threeSum(nums))  # Expected output: []
+    nums = [0,0,0]
+    print(sol.threeSum(nums))  # Expected output: [[0, 0, 0]]
+    
