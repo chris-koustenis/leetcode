@@ -7,47 +7,29 @@ using namespace std;
 
 class Solution
 {
-private:
-    //Trying  approach BOTTOM UP
-    int jump_helper(const vector<int> &nums, int start, int jumps, const int &N, vector<int> &memo)
-    {   
-        if (start >= N - 1)
-        {
-            return jumps;
-        }
-        if (memo[start] != -1)
-        {
-            return jumps + memo[start];
-        }
-
-        int min_jumps = INT_MAX;
-        int max_jump = nums[start];
-        for (int jump_length = 1; jump_length <= max_jump; ++jump_length)
-        {
-            int next_pos = start + jump_length;
-            if (next_pos < N)
-            {
-                int current_jumps = jump_helper(nums, next_pos, jumps + 1, N, memo);
-                min_jumps = min(min_jumps, current_jumps);
-            }
-        }
-        memo[start] = min_jumps - jumps; // Store only the additional jumps needed from this position
-        return min_jumps;
-    }
-
 public:
     int jump(vector<int> &nums)
     {   
         const int N = nums.size();
-        if (N == 1)
+        int farthest = 0;
+        int min_jumps = 0;
+        int current_end = 0;
+        for (int pos = 0; pos < N-1; pos++)
         {
-            return 0;
+            farthest = max(farthest, pos + nums[pos]);
+    
+            if (farthest >= N - 1)
+            {
+               return ++min_jumps;    
+            }
+            if(pos == current_end){
+                min_jumps++;
+                current_end = farthest;
+            }
         }
-        vector<int> memo(N, -1); // N memoulation memole
-        return jump_helper(nums, 0, 0, N, memo);
+        return min_jumps;
     }
 };
-
 
 int main()
 {

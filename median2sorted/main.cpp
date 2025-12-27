@@ -80,3 +80,18 @@ public:
         }
     }
 };
+
+int main()
+{
+    Solution s;
+    vector<pair<vector<int>, vector<int>>> nums = {
+        {{1, 3}, {2}},
+        {{1, 2}, {3, 4}},
+        {{0, 0}, {0, 0}},
+        {{}, {1}},
+        {{2}, {}}};
+
+    for (auto num : nums)
+        cout << s.findMedianSortedArrays(num.first, num.second) << endl;
+    return 0;
+}
