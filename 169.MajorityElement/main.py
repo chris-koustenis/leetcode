@@ -1,0 +1,20 @@
+from typing import List
+
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        count = 0
+        candidate = nums[0]
+        for num in nums:
+            if count == 0:
+                candidate = num
+            count += 1 if num == candidate else -1
+        return candidate
+
+
+# Example usage:
+if __name__ == "__main__":
+    solution = Solution()
+    nums = [3, 2, 3]
+    print(solution.majorityElement(nums))  # Output: 3
+    nums = [2, 2, 1, 1, 1, 2, 2]
+    print(solution.majorityElement(nums))  # Output: 2
