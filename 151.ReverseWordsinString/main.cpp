@@ -10,7 +10,7 @@ public:
         string word;
         for (int i = 0; i < N; ++i){
             word = "";
-            while(s[i] != ' ' && i < N) word = word + s[i++];
+            while(i < N && s[i] != ' ') word = word + s[i++];
             if(!word.empty()) ans = word + ' ' + ans;
         }
         if(ans.back() == ' ') ans.pop_back();

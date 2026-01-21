@@ -36,20 +36,10 @@ class SolutionIterative
 public:
     vector<int> inorderTraversal(TreeNode *root)
     {
-        vector<int> ans;
         stack<int> s;
-        TreeNode* ptr = root;
-        s.push(ptr->val);
+        
 
-        while(!s.empty())
-        {
-            s.push(ptr->right->val);
-            s.push(ptr->val);
-            s.push(ptr->left->val);
 
-            ptr = ptr->left;
-            
-        }
     }
 
 };
